@@ -28,26 +28,27 @@ class ViewController: UIViewController {
         ydf.text="\(x)"
     }
     //
-    @IBAction func jdjf(sender: UIButton) {
-        x++
-        jdf.text="\(x)"
-    }
+   
     
+    @IBAction func jdjf(sender: UIButton) {
+        l++
+        jdf.text="\(l)"
+    }
     @IBAction func jdjfer(sender: UIButton) {
-        x=x+2
-        jdf.text="\(x)"
+        l=x+2
+        jdf.text="\(l)"
     }
     
     @IBAction func jdjfsan(sender: UIButton) {
-        x=x+3
-        jdf.text="\(x)"
+        l=x+3
+        jdf.text="\(l)"
 
     }
     
     @IBAction func qingkong(sender: UIButton) {
         
-        ydf.text="\(l)"
-        jdf.text="\(l)"
+        ydf.text="\(0)"
+        jdf.text="\(0)"
         
     }
     
@@ -58,8 +59,6 @@ class ViewController: UIViewController {
     //4.按下按钮值应该直接存入数据库，而显示的分的页面是查询数据库之后得到的得分
     var db:SQLiteDB!
     
-    @IBOutlet var txtUname: UITextField!
-    @IBOutlet var txtMobile: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +66,7 @@ class ViewController: UIViewController {
         //获取数据库实例
         db = SQLiteDB.sharedInstance()
         //如果表还不存在则创建表（其中uid为自增主键）
-        db.execute("create table if not exists t_user(uid integer primary key,jiadjy varchar(20)")
+        db.execute("create table if not exists tt_user(uid integer primary key,jdf varchar(20),ydf varchar(20))")
         //如果有数据则加载
         initUser()
     }
@@ -78,29 +77,31 @@ class ViewController: UIViewController {
    //     saveUser()
    // }
     
-    @IBAction func jiajybc(sender: AnyObject) {
+    @IBAction func bc(sender: AnyObject) {
         saveUser()
     }
-    
     //从SQLite加载数据
     func initUser() {
-        let data = db.query("select * from t_user")
+        let data = db.query("select * from tt_user")
         if data.count > 0 {
             //获取最后一行数据显示
             let user = data[data.count - 1]
-            jdf.text=user["jiadjy"] as? String
+            jdf.text=user["jdf"] as? String
+            ydf.text=user["ydf"] as? String
             //txtUname.text = user["uname"] as? String
             //txtMobile.text = user["mobile"] as? String
         }
+        print(data)
     }
     
     //保存数据到SQLite
     func saveUser() {
         //甲乙两队得分数据变量
-        var jiadjy = 0
-        jiadjy++
+        let jd = 1
+        let yd = 1
+        //jiad++
         //插入数据库，这里用到了esc字符编码函数，其实是调用bridge.m实现的
-        let sql = "insert into t_user(jiadjy) varchar('\(jiadjy)')"
+        let sql = "insert into tt_user(ydf,jdf) values('\(123)','\(567)')"
         print("sql: \(sql)")
         //通过封装的方法执行sql
         let result = db.execute(sql)

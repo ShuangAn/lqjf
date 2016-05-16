@@ -18,7 +18,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="+1"/>
                                 <connections>
-                                    <action selector="jiajybc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="da4-eC-Kz3"/>
+                                    <action selector="jdjf:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cu6-lz-nOT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="koA-hD-E20">
@@ -50,7 +50,6 @@
                                 <state key="normal" title="+1"/>
                                 <connections>
                                     <action selector="ydjf:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JMA-nt-bum"/>
-                                    <segue destination="Jfh-KW-zww" kind="modal" id="Gm0-4a-USD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gQH-Wa-UbG">
@@ -110,6 +109,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="R6u-zc-0jL">
+                                <rect key="frame" x="86" y="436" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="bc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zWP-cc-0E1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

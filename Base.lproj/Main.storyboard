@@ -117,11 +117,33 @@
                                     <action selector="bc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zWP-cc-0E1"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HDe-rj-Lps">
+                                <rect key="frame" x="144" y="117" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="开始"/>
+                                <connections>
+                                    <action selector="star:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Psc-Tb-J1s"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L0r-3r-WSK">
+                                <rect key="frame" x="144" y="179" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="暂停"/>
+                                <connections>
+                                    <action selector="stop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RmD-Yd-h5I"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T2m-mS-tqU">
+                                <rect key="frame" x="144" y="28" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="vs"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="jdf" destination="JMV-DV-0Ij" id="fbr-a8-oY4"/>
+                        <outlet property="timel" destination="Rcd-n9-kju" id="9qb-ho-qVg"/>
                         <outlet property="ydf" destination="mma-3u-ktq" id="EeS-mJ-l7l"/>
                     </connections>
                 </viewController>

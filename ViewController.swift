@@ -9,6 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
+    //倒计时
+    var time : NSTimer!
+    var _tame:Int = 1800
+    var stop : NSTimer!
+    @IBOutlet weak var timel: UILabel!
     //实现加分按钮
     @IBOutlet var jdf: UILabel!
     
@@ -27,20 +32,41 @@ class ViewController: UIViewController {
         x=x+3
         ydf.text="\(x)"
     }
-    //
+    //倒计时方法
+    @IBAction func star(sender: AnyObject) {
+        time = NSTimer.scheduledTimerWithTimeInterval(1,target:self,selector: Selector("tickDown"),userInfo: nil,repeats: true)
+    }
+    
+    @IBAction func stop(sender: AnyObject) {
+        time.invalidate()
+    }
+    func tickDown()
+    {
+        _tame -= 1
+        let sec = _tame%60
+        let min = _tame/60
+        timel.text = String(min)+":"+String(sec)
+        if(_tame == 0) {
+            time.invalidate()
+        }
+    }
+    
+
+  
    
     
     @IBAction func jdjf(sender: UIButton) {
+        
         l++
-        jdf.text="\(l)"
+        //jdf.text="\(l)"
     }
     @IBAction func jdjfer(sender: UIButton) {
-        l=x+2
+        l=l+2
         jdf.text="\(l)"
     }
     
     @IBAction func jdjfsan(sender: UIButton) {
-        l=x+3
+        l=l+3
         jdf.text="\(l)"
 
     }
@@ -51,6 +77,8 @@ class ViewController: UIViewController {
         jdf.text="\(0)"
         
     }
+    
+    //判断按钮，选择加分
     
     
     
@@ -68,7 +96,7 @@ class ViewController: UIViewController {
         //如果表还不存在则创建表（其中uid为自增主键）
         db.execute("create table if not exists tt_user(uid integer primary key,jdf varchar(20),ydf varchar(20))")
         //如果有数据则加载
-        initUser()
+        //initUser()
     }
     
     //点击保存
@@ -78,7 +106,8 @@ class ViewController: UIViewController {
    // }
     
     @IBAction func bc(sender: AnyObject) {
-        saveUser()
+        initUser()
+        //saveUser()
     }
     //从SQLite加载数据
     func initUser() {
@@ -87,7 +116,7 @@ class ViewController: UIViewController {
             //获取最后一行数据显示
             let user = data[data.count - 1]
             jdf.text=user["jdf"] as? String
-            ydf.text=user["ydf"] as? String
+            //ydf.text=user["ydf"] as? String
             //txtUname.text = user["uname"] as? String
             //txtMobile.text = user["mobile"] as? String
         }
@@ -97,16 +126,18 @@ class ViewController: UIViewController {
     //保存数据到SQLite
     func saveUser() {
         //甲乙两队得分数据变量
-        let jd = 1
-        let yd = 1
+        //let jdf = self.jdf.text!
+        //let ydf = self.ydf.text!
         //jiad++
         //插入数据库，这里用到了esc字符编码函数，其实是调用bridge.m实现的
-        let sql = "insert into tt_user(ydf,jdf) values('\(123)','\(567)')"
+        let sql = "insert into tt_user(jdf) values('\(1)')"
         print("sql: \(sql)")
         //通过封装的方法执行sql
         let result = db.execute(sql)
         print(result)
     }
+   
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

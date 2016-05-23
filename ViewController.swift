@@ -18,19 +18,27 @@ class ViewController: UIViewController {
     @IBOutlet var jdf: UILabel!
     
     @IBOutlet var ydf: UILabel!
+    //存入数据库的数据z
+    var z:Int = 0
     var x:Int = 0
     var l:Int = 0
     @IBAction func ydjf(sender: UIButton) {
-        x++
+        x=x+1
         ydf.text="\(x)"
+        z=1
+        saveUser(z)
     }
     @IBAction func ydjfer(sender: UIButton) {
         x=x+2
         ydf.text="\(x)"
+        z=2
+        saveUser(z)
     }
     @IBAction func ydjfsan(sender: UIButton) {
         x=x+3
         ydf.text="\(x)"
+        z=3
+        saveUser(z)
     }
     //倒计时方法
     @IBAction func star(sender: AnyObject) {
@@ -57,17 +65,23 @@ class ViewController: UIViewController {
     
     @IBAction func jdjf(sender: UIButton) {
         
-        l++
-        //jdf.text="\(l)"
+        l=l+1
+        jdf.text="\(l)"
+        z=1
+        saveUser(z)
     }
     @IBAction func jdjfer(sender: UIButton) {
         l=l+2
         jdf.text="\(l)"
+        z=2
+        saveUser(z)
     }
     
     @IBAction func jdjfsan(sender: UIButton) {
         l=l+3
         jdf.text="\(l)"
+        z=3
+        saveUser(z)
 
     }
     
@@ -75,6 +89,8 @@ class ViewController: UIViewController {
         
         ydf.text="\(0)"
         jdf.text="\(0)"
+        x=0
+        l=0
         
     }
     
@@ -124,13 +140,13 @@ class ViewController: UIViewController {
     }
     
     //保存数据到SQLite
-    func saveUser() {
+    func saveUser(x:Int) {
         //甲乙两队得分数据变量
         //let jdf = self.jdf.text!
         //let ydf = self.ydf.text!
         //jiad++
         //插入数据库，这里用到了esc字符编码函数，其实是调用bridge.m实现的
-        let sql = "insert into tt_user(jdf) values('\(1)')"
+        let sql = "insert into tt_user(jdf) values('\(x)')"
         print("sql: \(sql)")
         //通过封装的方法执行sql
         let result = db.execute(sql)

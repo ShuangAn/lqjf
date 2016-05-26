@@ -9,6 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var jdname: UILabel!
+    
+    @IBOutlet weak var ydname: UILabel!
     //倒计时
     var time : NSTimer!
     var _tame:Int = 1800
@@ -112,7 +116,7 @@ class ViewController: UIViewController {
         //如果表还不存在则创建表（其中uid为自增主键）
         db.execute("create table if not exists tt_user(uid integer primary key,jdf varchar(20),ydf varchar(20))")
         //如果有数据则加载
-        //initUser()
+        initUser()
     }
     
     //点击保存
@@ -127,12 +131,12 @@ class ViewController: UIViewController {
     }
     //从SQLite加载数据
     func initUser() {
-        let data = db.query("select * from tt_user")
+        let data = db.query("select * from xx_user")
         if data.count > 0 {
             //获取最后一行数据显示
             let user = data[data.count - 1]
-            jdf.text=user["jdf"] as? String
-            //ydf.text=user["ydf"] as? String
+            jdname.text=user["jdxx"] as? String
+            ydname.text=user["ydxx"] as? String
             //txtUname.text = user["uname"] as? String
             //txtMobile.text = user["mobile"] as? String
         }

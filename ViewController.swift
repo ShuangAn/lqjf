@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var jdfs: UILabel!
+    @IBOutlet weak var ydfs: UILabel!
     @IBOutlet weak var jdname: UILabel!
     
     @IBOutlet weak var ydname: UILabel!
@@ -30,19 +32,19 @@ class ViewController: UIViewController {
         x=x+1
         ydf.text="\(x)"
         z=1
-        saveUser(z)
+        saveyUser(z)
     }
     @IBAction func ydjfer(sender: UIButton) {
         x=x+2
         ydf.text="\(x)"
         z=2
-        saveUser(z)
+        saveyUser(z)
     }
     @IBAction func ydjfsan(sender: UIButton) {
         x=x+3
         ydf.text="\(x)"
         z=3
-        saveUser(z)
+        saveyUser(z)
     }
     //倒计时方法
     @IBAction func star(sender: AnyObject) {
@@ -115,6 +117,7 @@ class ViewController: UIViewController {
         db = SQLiteDB.sharedInstance()
         //如果表还不存在则创建表（其中uid为自增主键）
         db.execute("create table if not exists tt_user(uid integer primary key,jdf varchar(20),ydf varchar(20))")
+        db.execute("create table if not exists zf_user(uid integer primary key,jdf varchar(20),ydf varchar(20))")
         //如果有数据则加载
         initUser()
     }
@@ -126,7 +129,7 @@ class ViewController: UIViewController {
    // }
     
     @IBAction func bc(sender: AnyObject) {
-        initUser()
+        zbfUser()
         //saveUser()
     }
     //从SQLite加载数据
@@ -150,9 +153,30 @@ class ViewController: UIViewController {
         //let ydf = self.ydf.text!
         //jiad++
         //插入数据库，这里用到了esc字符编码函数，其实是调用bridge.m实现的
+        let sql = "insert into tt_user(ydf) values('\(x)')"
+        print("sql: \(sql)")
+        //通过封装的方法执行sql
+        let result = db.execute(sql)
+        print(result)
+    }
+    
+    func saveyUser(x:Int) {
+        //甲乙两队得分数据变量
+        //let jdf = self.jdf.text!
+        //let ydf = self.ydf.text!
+        //jiad++
+        //插入数据库，这里用到了esc字符编码函数，其实是调用bridge.m实现的
         let sql = "insert into tt_user(jdf) values('\(x)')"
         print("sql: \(sql)")
         //通过封装的方法执行sql
+        let result = db.execute(sql)
+        print(result)
+    }
+    func zbfUser() {
+        let jdf = self.jdfs.text!
+        let ydf = self.ydfs.text!
+        let sql = "insert into zf_user(jdf,ydf) values('\(jdf)','\(ydf)')"
+        print("sql: \(sql)")
         let result = db.execute(sql)
         print(result)
     }
